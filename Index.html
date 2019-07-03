@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+<style>
+
+</style>
+</head>
+
+<body onload="loading()">
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+         <h3 class="panel-title pull-left">
+            Blog Assignment
+            </h3>
+
+            <a href="index1.html"><button class="btn btn-default pull-right" onclick="createIdForButtons()">Create</button></a>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+<div class="container">
+    <div id="sample"></div>   
+</div>
+
+<script>
+
+function createIdForButtons(){
+  localStorage.setItem("buttonId","save");
+}
+
+
+  var localData = JSON.parse(localStorage.getItem("blogContent"));
+
+  function loading(){
+
+    for(i=0; i<=localData.length; i++){
+
+      var dd = `
+      <div class="container" style=" margin-left: -8px; padding: 5px;">
+      <h3 class="container1">
+          Blog Content
+      </h3>
+      </div>
+      <label id="result" for="fname">Title</label>
+       <button class="btn1"><i class="fa fa-edit" onclick="editblog(${i})"></i></button>
+       
+      <div class="dynamicBlock">
+        <h4>${ localData[i].n}</h4>
+        <p>${ localData[i].m }</p>
+      </div>
+      
+      `;
+       document.getElementById("sample").innerHTML+= dd;
+    }
+
+  }
+  function editblog(i){
+    //alert(i);
+      window.location.href = "index1.html";
+      localStorage.setItem("index", i);
+      localStorage.setItem("buttonId","edit");
+  }
+  
+</script>
+
+</body> 
+</html>
